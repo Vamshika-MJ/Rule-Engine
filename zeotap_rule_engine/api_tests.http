@@ -1,0 +1,31 @@
+### Create Rule Request
+POST http://127.0.0.1:5000/create_rule
+Content-Type: application/json
+
+{
+  "rule": "age > 30 AND department = 'Sales'"
+}
+
+### Combine Rules Request
+POST http://127.0.0.1:5000/combine_rules
+Content-Type: application/json
+
+{
+  "rules": [
+    "age > 30 AND department = 'Sales'",
+    "salary > 50000"
+  ]
+}
+
+### Evaluate Rule Request
+POST http://127.0.0.1:5000/evaluate_rule
+Content-Type: application/json
+
+{
+  "ast": { /* Example AST from create/combine rule response */ },
+  "data": {
+    "age": 35,
+    "department": "Sales",
+    "salary": 60000
+  }
+}
